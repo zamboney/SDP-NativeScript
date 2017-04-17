@@ -1,0 +1,28 @@
+{
+  "name": "SDP-NativeScript",
+  "version": "1.0.0",
+  "description": "this is a sample code for sela developer practice course.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "run-pres": "live-server --watch=./docs --open=./docs ",
+    "mermaid": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zamboney/SDP-NativeScript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zamboney/SDP-NativeScript/issues"
+  },
+  "homepage": "https://github.com/zamboney/SDP-NativeScript#readme",
+  "dependencies": {
+    "live-server": "^1.2.0",
+    "mermaid": "^7.0.0"
+  }
+}
