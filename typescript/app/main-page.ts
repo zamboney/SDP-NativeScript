@@ -4,28 +4,51 @@ a code-behind file. The code-behind is a great place to place your view
 logic, and to set up your page’s data binding.
 */
 
-import { EventData } from 'data/observable';
+import { EventData, Observable } from 'data/observable';
 import { Page } from 'ui/page';
-import { GetDetailsModel } from './main-view-model';
+import { LoadingIndicator } from "nativescript-loading-indicator";
+import { ObservableArray } from "data/observable-array";
+import { getJSON } from "http";
+import { topmost } from "ui/frame";
 
-// Event handler for Page "navigatingTo" event attached in main-page.xml
+
+export class MainModel extends Observable {
+
+    public firstName: string;
+    public lastName: string;
+    public selectedCategory: number = 0;
+    public loadingIndicator: LoadingIndicator = new LoadingIndicator();
+    public categories: ObservableArray<string> = new ObservableArray(['none']);
+    public dropDownSelectedIndexChanged(args: any) {
+        this.selectedCategory = args.newIndex;
+        console.log(`Drop Down selected index changed from ${args.oldIndex} to ${args.newIndex}`);
+    }
+    constructor() {
+        super();
+        this.loadingIndicator.show();
+        getJSON('http://api.icndb.com/categories').then((cats:any)=>{
+            this.categories.push(cats.value);
+            this.set("selectedCategory", this.selectedCategory);
+            this.loadingIndicator.hide();
+
+        })
+    }
+
+    public onTap() {
+        topmost().navigate({
+            moduleName: 'joke-page',
+            context: {
+                firstName: this.firstName,
+                lastName: this.lastName,
+                category: this.categories[this.selectedCategory]
+            }
+        });
+    }
+
+}
+
 export function navigatingTo(args: EventData) {
-    /*
-    This gets a reference this page’s <Page> UI component. You can
-    view the API reference of the Page to see what’s available at
-    https://docs.nativescript.org/api-reference/classes/_ui_page_.page.html
-    */
     let page = <Page>args.object;
     
-    /*
-    A page’s bindingContext is an object that should be used to perform
-    data binding between XML markup and TypeScript code. Properties
-    on the bindingContext can be accessed using the {{ }} syntax in XML.
-    In this example, the {{ message }} and {{ onTap }} bindings are resolved
-    against the object returned by createViewModel().
-
-    You can learn more about data binding in NativeScript at
-    https://docs.nativescript.org/core-concepts/data-binding.
-    */
-    page.bindingContext = new GetDetailsModel();
+    page.bindingContext = new MainModel();
 }

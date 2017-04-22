@@ -1,12 +1,15 @@
 <Page 
     xmlns="http://www.nativescript.org/tns.xsd" loaded="onLoaded" navigatedFrom="onNavigatedFrom" navigatedTo="onNavigatedTo">
-    <!--<StackLayout><Label text="{{ joke }}" class="label" textWrap="true" /></StackLayout>-->
+    <Page.actionBar>
+        <ActionBar title="Jokes List">
+        </ActionBar>
+    </Page.actionBar>
     <GridLayout rows="*, auto" columns="*">
         <ScrollView row="0" col="0">
-            <ListView items="{{ jokes }}" class="list-group">
+            <ListView items="{{ jokes }}" class="list-group" itemTap="{{ share }}">
                 <ListView.itemTemplate>
                     <GridLayout class="list-group-item" rows="auto" columns="*, 4*">
-                        <Label text="{{ id }}" row="0" col="0" />
+                        <Label text="{{ category }}" row="0" col="0" />
                         <Label text="{{ joke }}" row="0" col="1" textWrap="true"/>
                     </GridLayout>
                 </ListView.itemTemplate>

@@ -5,7 +5,8 @@ You can find a full list of user interface components you can use in your app at
 https://docs.nativescript.org/ui/components.
 -->
 <Page 
-  xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="page">
+  xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="page" 
+  xmlns:dd="nativescript-drop-down">
   <!--
     The ActionBar is the NativeScript common abstraction over the Android ActionBar and iOS NavigationBar.
     http://docs.nativescript.org/ui/action-bar
@@ -21,17 +22,19 @@ https://docs.nativescript.org/ui/components.
     https://docs.nativescript.org/ui/layout-containers.
 
     These components make use of several CSS class names that are part of the NativeScript
-    core theme, such as p-20, btn, h2, and text-center. You can view a full list of the
+    core theme,such as p-20, btn, h2, and text-center. You can view a full list of the
     class names available for styling your app at https://docs.nativescript.org/ui/theme.
     -->
   <StackLayout class="form">
     <StackLayout class="input-field">
-      <Label class="label" text="First Name:"></Label>
-      <TextField class="input" text="{{ firstName }}"></TextField>
+      <TextField hint="First Name" class="input" text="{{ firstName }}"></TextField>
     </StackLayout>
     <StackLayout class="input-field">
-      <Label class="label" text="Last Name:"></Label>
-      <TextField class="input" text="{{ lastName }}"></TextField>
+      <TextField hint="Last Name" class="input" text="{{ lastName }}"></TextField>
+    </StackLayout>
+    <StackLayout orientation="horizontal" class="input-field">
+      <Label text="Category: " textWrap="true" />
+      <dd:DropDown items="{{ categories }}" selectedIndex="{{ selectedCategory }}"  />
     </StackLayout>
     <Button text="Create A Chuck Norris Joke" tap="{{ onTap }}" class="btn btn-primary btn-active"/>
   </StackLayout>
