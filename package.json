@@ -7,8 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "run-pres": "live-server --watch=./docs --open=./docs ",
-    "mermaid": ""
+    "pres": "live-server --watch=./docs --open=./docs "
   },
   "repository": {
     "type": "git",

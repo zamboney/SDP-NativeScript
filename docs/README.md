@@ -120,7 +120,7 @@ all that left is to run the JSVM in the app to run JavScript and convert it **J*
 
 ##that it!
 
-you now have typescript on your machine
+you now have NativeScript on your machine
 
 for further explanation go to [http://docs.nativescript.org/start/quick-setup](http://docs.nativescript.org/start/quick-setup)
 
@@ -136,6 +136,16 @@ so just select the folder that you want the NativeScript app be located and run
 there is a lot of NativeScript template in [https://www.tjvantoll.com/2016/02/22/creating-nativescript-templates/](https://www.tjvantoll.com/2016/02/22/creating-nativescript-templates/)
 
 
+in this example we going to use `tns-template-hello-world-ng` template.
+
+NativeScript `cli` provide a short cut for this 
+
+
+```
+    tns create <project-name> --ng
+```
+
+
 Now lets app iOS and Android source file to the project.
 
 ```bash
@@ -149,5 +159,7 @@ all that left it to run the app
 tns run ios
 tns run android
 ```
+
+## Building The Chuck Norris Joke App
 
 
