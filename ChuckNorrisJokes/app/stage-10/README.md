@@ -1,0 +1,1 @@
+this stage is about using a native sharing system

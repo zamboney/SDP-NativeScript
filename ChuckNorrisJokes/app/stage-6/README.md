@@ -1,0 +1,1 @@
+this stage it about getting data from remote resource
